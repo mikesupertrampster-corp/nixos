@@ -1,5 +1,5 @@
 name: Gitleaks
-on: pull_request
+on: push
 jobs:
   gitleaks:
     runs-on: ubuntu-latest
