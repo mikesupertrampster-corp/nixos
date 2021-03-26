@@ -7,8 +7,18 @@ let
      rev    = "ef4b5a484834554c6ac55a6941e5976f0cd5a487";
      sha256 = "sha256:10q3ylva0rrsdfbfj17na91d9zi42n7qisnrfcs7xxraw2mm15wk";
    });
+
 in
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+        inherit pkgs;
+      };
+    };
+  };
+
   imports = [
     ./interface/wmgr.nix
     ./interface/polybar.nix
@@ -26,7 +36,7 @@ in
       KUBE_EDITOR        = "vi";
       SSH_AUTH_SOCK      = "$(gpgconf --list-dirs agent-ssh-socket)";
       PASSWORD_STORE_DIR = "${default.user.home}/.password-store";
-      PASSWORD_STORE_KEY = default.work.email;
+      PASSWORD_STORE_KEY = default.work.alt;
       PASSWORD_STORE_GIT = default.work.passwordstore.git;
     };
 
@@ -40,12 +50,41 @@ in
 
   programs = {
     autorandr.enable      = true;
-    chromium.enable       = true;
+    browserpass.enable    = true;
     feh.enable            = true;
     gpg.enable            = true;
     jq.enable             = true;
     home-manager.enable   = true;
     password-store.enable = true;
+
+    chromium = {
+      enable = true;
+      extensions = [
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
+        { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
+        { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass
+        { id = "kaoholkoedbpjiangnchpfchhmageifp"; } # whatsapp
+        { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # darkreader
+        { id = "jpmkfafbacpgapdghgdpembnojdlgkdl"; } # aws
+      ];
+    };
+
+    firefox = {
+      enable = true;
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        browserpass
+        darkreader
+        https-everywhere
+        lastpass-password-manager
+        multi-account-containers
+        ublock-origin
+      ];
+      profiles = {
+        "${default.user.name}" = {
+          name = "${default.user.name}";
+        };
+      };
+    };
 
     go = {
       enable = true;
@@ -75,7 +114,7 @@ in
       aliases = {
         co = "checkout";
       };
-      ignores = ["*.swp" "idea"];
+      ignores = ["*.swp" "idea" "bin"];
       extraConfig = {
         core = {
           editor = "vi";

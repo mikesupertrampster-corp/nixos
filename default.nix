@@ -6,6 +6,7 @@
   work = {
     name  = "mliu-mettle";
     email = "michael.liu@mettle.co.uk";
+    alt   = "sivinh.liu@rbs.com";
     gpg   = "41EA503E72FE23D0B64494A1ED62064B04DD509E";
     passwordstore = {
       git = "git@github.com:mliu-mettle/password-store.git";
@@ -16,5 +17,16 @@
     keyboard.layout = "us";
     console.font    = "Lat2-Terminus16";
     timeZone        = "Europe/London";
+  };
+  browserextensions = {
+    firefox = [
+      ublock-origin
+      multi-account-containers
+      https-everywhere
+      darkreader
+      lastpass-password-manager
+      browserpass
+    ];
+
   };
 }
