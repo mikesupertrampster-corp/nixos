@@ -4,8 +4,8 @@ let
   default = import (pkgs.fetchFromGitHub {
      owner  = "mikesupertrampster";
      repo   = "nixos";
-     rev    = "f01b9484476f1d04d35e0bedeb8793c386158c0c";
-     sha256 = "sha256:0m24dw1zbz6yrdiwmz6n2dmmyjbx2qj5v4xqdv4qvs71vz0cqm7z";
+     rev    = "ef4b5a484834554c6ac55a6941e5976f0cd5a487";
+     sha256 = "sha256:10q3ylva0rrsdfbfj17na91d9zi42n7qisnrfcs7xxraw2mm15wk";
    });
 in
 {
