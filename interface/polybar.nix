@@ -1,0 +1,237 @@
+{ pkgs, lib, ... }:
+
+let
+  iface = "wlp7s0";
+in
+{
+  services = {
+    polybar = {
+      enable = true;
+      script = "~/.config/polybar/launch.sh";
+      package = pkgs.polybar.override {
+        i3Support = true;
+      };
+      config = {
+        "colors" = {
+          background = "#aa000000";
+          background-alt = "#aabbbbbb";
+          foreground = "#dfdfdf";
+          foreground-alt = "#aa555555";
+          white = "#999";
+          primary = "#03ae9f";
+          secondary = "#44e60053";
+          alert = "#44bd2c40";
+        };
+        "bar/top" = {
+          monitor = "\${env:MONITOR:}";
+          width = "100%";
+          height = "45";
+          fixed-center = "false";
+          background = "\${colors.background}";
+          foreground = "\${colors.foreground}";
+          font-0 = "3270Narrow Nerd Font:size=15;2";
+          font-1 = "Siji:size=18;2";
+          tray-position = "right";
+          tray-padding = "6";
+          scroll-up = "i3wm-wsnext";
+          scroll-down = "i3wm-wsprev";
+          module-margin = "3";
+          modules-left = "i3";
+          modules-right = "filesystem alsa memory cpu wlan temperature xkeyboard date";
+        };
+        "module/i3" = {
+          type = "internal/i3";
+          margin-top = "10";
+          format = "<label-state> <label-mode>";
+          index-sort = "true";
+          wrapping-scroll = "false";
+          label-mode-padding = "2";
+          label-mode-foreground = "#000";
+          label-mode-background = "\${colors.primary}";
+          label-focused = "%index%";
+          label-focused-foreground = "#000000";
+          label-focused-background = "\${colors.primary}";
+          label-focused-padding = "4";
+          label-unfocused = "%index%";
+          label-unfocused-padding = "4";
+          label-visible = "%index%";
+          label-visible-background = "\${self.label-focused-background}";
+          label-visible-padding = "\${self.label-focused-padding}";
+          label-urgent = "%index%";
+          label-urgent-background = "\${colors.alert}";
+          label-urgent-padding = "4";
+        };
+        "module/filesystem" = {
+          type = "internal/fs";
+          interval = "25";
+          mount-0 = "/";
+          label-mounted = " %percentage_used%%";
+          label-unmounted = "%mountpoint% not mounted";
+          label-unmounted-foreground = "\${colors.foreground-alt}";
+        };
+        "module/xkeyboard" = {
+          type = "internal/xkeyboard";
+          blacklist-0 = "num lock";
+          format-prefix = " ";
+          format-prefix-foreground = "\${colors.white}";
+          format-prefix-underline = "\${colors.secondary}";
+          label-layout = "%layout%";
+          label-layout-underline = "\${colors.secondary}";
+          label-indicator-padding = "2";
+          label-indicator-margin = "1";
+          label-indicator-background = "\${colors.secondary}";
+          label-indicator-underline = "\${colors.secondary}";
+        };
+        "module/alsa" = {
+          type = "internal/alsa";
+          format-volume = "<label-volume> <bar-volume>";
+          label-volume = "";
+          label-volume-foreground = "\${root.foreground}";
+          format-muted-prefix = " ";
+          format-muted-foreground = "\${colors.white}";
+          label-muted = "muted";
+          bar-volume-width = "10";
+          bar-volume-foreground-0 = "#55aa55";
+          bar-volume-foreground-1 = "#55aa55";
+          bar-volume-foreground-2 = "#55aa55";
+          bar-volume-foreground-3 = "#55aa55";
+          bar-volume-foreground-4 = "#55aa55";
+          bar-volume-foreground-5 = "#f5a70a";
+          bar-volume-foreground-6 = "#ff5555";
+          bar-volume-gradient = "false";
+          bar-volume-indicator = "|";
+          bar-volume-indicator-font = "2";
+          bar-volume-fill = "─";
+          bar-volume-fill-font = "2";
+          bar-volume-empty = "─";
+          bar-volume-empty-font = "2";
+          bar-volume-empty-foreground = "\${colors.foreground-alt}";
+        };
+        "module/cpu" = {
+          type = "internal/cpu";
+          interval = "2";
+          format = "<label> <ramp-coreload>";
+          label = "CPU";
+          ramp-coreload-0 = "▁";
+          ramp-coreload-0-font = "2";
+          ramp-coreload-0-foreground = "#aaff77";
+          ramp-coreload-1 = "▂";
+          ramp-coreload-1-font = "2";
+          ramp-coreload-1-foreground = "#aaff77";
+          ramp-coreload-2 = "▃";
+          ramp-coreload-2-font = "2";
+          ramp-coreload-2-foreground = "#aaff77";
+          ramp-coreload-3 = "▄";
+          ramp-coreload-3-font = "2";
+          ramp-coreload-3-foreground = "#aaff77";
+          ramp-coreload-4 = "▅";
+          ramp-coreload-4-font = "2";
+          ramp-coreload-4-foreground = "#fba922";
+          ramp-coreload-5 = "▆";
+          ramp-coreload-5-font = "2";
+          ramp-coreload-5-foreground = "#fba922";
+          ramp-coreload-6 = "▇";
+          ramp-coreload-6-font = "2";
+          ramp-coreload-6-foreground = "#ff5555";
+          ramp-coreload-7 = "█";
+          ramp-coreload-7-font = "2";
+          ramp-coreload-7-foreground = "#ff5555";
+        };
+        "module/memory" = {
+          type = "internal/memory";
+          interval = "2";
+          format = "<label> <bar-used>";
+          label = "RAM";
+          bar-used-width = "10";
+          bar-used-foreground-0 = "#aaff77";
+          bar-used-foreground-1 = "#aaff77";
+          bar-used-foreground-2 = "#fba922";
+          bar-used-foreground-3 = "#ff5555";
+          bar-used-indicator = "|";
+          bar-used-indicator-font = "6";
+          bar-used-indicator-foreground = "#ff";
+          bar-used-fill = "─";
+          bar-used-fill-font = "6";
+          bar-used-empty = "─";
+          bar-used-empty-font = "6";
+          bar-used-empty-foreground = "#444444";
+        };
+        "module/wlan" = {
+          type = "internal/network";
+          interface = iface;
+          interval = "3.0";
+          format-connected = "<ramp-signal> <label-connected>";
+          format-connected-underline = "#9f78e1";
+          label-connected = "%essid%";
+          label-connected-foreground = "#36BC98";
+          ramp-signal-0 = "";
+          ramp-signal-1 = "";
+          ramp-signal-2 = "";
+          ramp-signal-3 = "";
+          ramp-signal-4 = "";
+          ramp-signal-5 = "";
+          ramp-signal-foreground = "\${colors.foreground}";
+        };
+        "module/battery" = {
+          type = "internal/battery";
+          battery = "BAT0";
+          adapter = "AC0";
+          full-at = "99";
+          format-charging = "<animation-charging> <label-charging>";
+          format-charging-underline = "#ffb52a";
+          format-discharging = "<ramp-capacity> <label-discharging>";
+          format-full-prefix = "  ";
+          format-full-prefix-foreground = "\${colors.foreground}";
+          ramp-capacity-0 = "";
+          ramp-capacity-1 = "";
+          ramp-capacity-2 = "";
+          ramp-capacity-3 = "";
+          ramp-capacity-4 = "";
+          bar-capacity-width = "10";
+          animation-charging-0 = "";
+          animation-charging-1 = "";
+          animation-charging-2 = "";
+          animation-charging-3 = "";
+          animation-charging-4 = "";
+          animation-charging-framerate = "750";
+          animation-discharging-0 = "";
+          animation-discharging-1 = "";
+          animation-discharging-2 = "";
+          animation-discharging-3 = "";
+          animation-discharging-4 = "";
+          animation-discharging-framerate = "500";
+        };
+        "module/date" = {
+          type = "internal/date";
+          interval = "5";
+          date = "%a %d %b";
+          time = "%H:%M";
+          time-alt = "%H:%M:%S";
+          format-prefix = " ";
+          format-prefix-foreground = "\${colors.foreground}";
+          format-underline = "#0a6cf5";
+          label = "%date% %time%";
+        };
+        "module/temperature" = {
+          type = "internal/temperature";
+          thermal-zone = "2";
+          format = "<ramp> <label>";
+          format-underline = "#f50a4d";
+          format-warn = "<ramp> <label-warn>";
+          format-warn-underline = "\${self.format-underline}";
+          label = "%temperature-c%";
+          label-warn = "%temperature-c%";
+          label-warn-foreground = "\${colors.secondary}";
+          ramp-0 = "";
+          ramp-1 = "";
+          ramp-2 = "";
+          ramp-3 = "";
+          ramp-4 = "";
+          ramp-foreground = "\${colors.foreground}";
+          base-temperature = "40";
+          warn-temperature = "60";
+        };
+      };
+    };
+  };
+}

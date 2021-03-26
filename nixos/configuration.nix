@@ -36,7 +36,8 @@ in
 
   console.font = default.locale.console.font;
   time.timeZone = default.locale.timeZone;
-  
+  i18n.defaultLocale  = default.locale.i18n;
+
   hardware = {
     cpu.intel.updateMicrocode = true;
     facetimehd.enable = true;
