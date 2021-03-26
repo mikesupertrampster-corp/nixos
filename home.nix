@@ -12,6 +12,7 @@ in
   imports = [
     ./interface/wmgr.nix
     ./interface/polybar.nix
+    ./interface/monitor.nix
   ];
 
   home = {
@@ -20,7 +21,7 @@ in
     keyboard.layout = default.locale.keyboard.layout;
 
     sessionVariables = {
-      AWSSO_CMD          = "docker run --rm -it -v ~/.aws:/home/mettle/.aws --network host $(pass mettle/onelogin/image) --profile default -u $(whoami) --onelogin-password $(pass mettle/onelogin/password)";
+      AWSSO_CMD          = "docker run --rm -it -v ~/.aws:/home/mettle/.aws --network host $(pass onelogin/image) --profile default -u $(whoami) --onelogin-password $(pass mettle/onelogin/password)";
       GPG_TTY            = "$(tty)";
       KUBE_EDITOR        = "vi";
       SSH_AUTH_SOCK      = "$(gpgconf --list-dirs agent-ssh-socket)";
