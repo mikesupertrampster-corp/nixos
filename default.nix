@@ -18,15 +18,4 @@
     console.font    = "Lat2-Terminus16";
     timeZone        = "Europe/London";
   };
-  browserextensions = {
-    firefox = [
-      ublock-origin
-      multi-account-containers
-      https-everywhere
-      darkreader
-      lastpass-password-manager
-      browserpass
-    ];
-
-  };
 }
