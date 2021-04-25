@@ -18,14 +18,14 @@ in
           foreground = "#dfdfdf";
           foreground-alt = "#aa555555";
           white = "#999";
-          primary = "#03ae9f";
+          primary = "#504776";
           secondary = "#44e60053";
           alert = "#44bd2c40";
         };
         "bar/top" = {
           monitor = "\${env:MONITOR:}";
           width = "100%";
-          height = "45";
+          height = "35";
           fixed-center = "false";
           background = "\${colors.background}";
           foreground = "\${colors.foreground}";
@@ -36,12 +36,13 @@ in
           scroll-up = "i3wm-wsnext";
           scroll-down = "i3wm-wsprev";
           module-margin = "3";
+          padding-left = "1";
+          padding-right = "1";
           modules-left = "i3";
           modules-right = "filesystem alsa memory cpu wlan temperature xkeyboard date";
         };
         "module/i3" = {
           type = "internal/i3";
-          margin-top = "10";
           format = "<label-state> <label-mode>";
           index-sort = "true";
           wrapping-scroll = "false";
@@ -49,17 +50,20 @@ in
           label-mode-foreground = "#000";
           label-mode-background = "\${colors.primary}";
           label-focused = "%index%";
-          label-focused-foreground = "#000000";
+          label-focused-foreground = "#ffffff";
           label-focused-background = "\${colors.primary}";
-          label-focused-padding = "4";
+          label-focused-padding = "2";
           label-unfocused = "%index%";
-          label-unfocused-padding = "4";
+          label-unfocused-padding = "2";
           label-visible = "%index%";
+          label-visible-foreground = "#000000";
           label-visible-background = "\${self.label-focused-background}";
           label-visible-padding = "\${self.label-focused-padding}";
           label-urgent = "%index%";
           label-urgent-background = "\${colors.alert}";
-          label-urgent-padding = "4";
+          label-urgent-padding = "2";
+          border-size = "2";
+          border-colour = "#000000";
         };
         "module/filesystem" = {
           type = "internal/fs";

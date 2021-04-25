@@ -81,6 +81,14 @@ in
       profiles = {
         "${default.user.name}" = {
           name = "${default.user.name}";
+          userChrome = ''
+            @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+            /* full screen toolbars */
+            #navigator-toolbox toolbar[moz-collapsed="true"]:not([collapsed="true"]) {
+             visibility:visible!important;
+            }
+          '';
         };
       };
     };
@@ -113,7 +121,7 @@ in
       aliases = {
         co = "checkout";
       };
-      ignores = ["*.swp" "idea" "bin"];
+      ignores = ["*.swp" "*.idea" "bin"];
       extraConfig = {
         core = {
           editor = "vi";

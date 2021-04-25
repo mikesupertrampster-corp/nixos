@@ -32,7 +32,7 @@
     gnumake bazel go citrix_workspace google-cloud-sdk kubernetes-helm
     istioctl kind kubeval gitAndTools.pre-commit docker-compose gotools
     stern tig bash docker-credential-gcr ssm-session-manager-plugin
-    trivy conftest hugo nodejs terraform-landscape terraform_0_14
+    trivy conftest hugo nodejs terraform-landscape terraform_0_14 gh
 
     (python39.withPackages(ps: with ps; [ boto3 ]))
 
