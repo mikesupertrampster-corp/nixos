@@ -44,6 +44,10 @@ in
         source = ./dotfiles/terminator.conf;
         target = ".config/terminator/config";
       };
+      "screenlayout" = {
+        source = ./dotfiles/screenlayout.sh;
+        target = ".screenlayout/default.sh";
+      };
     };
   };
 
