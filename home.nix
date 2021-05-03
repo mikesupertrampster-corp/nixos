@@ -45,8 +45,9 @@ in
         target = ".config/terminator/config";
       };
       "polybar" = {
-        source = ./dotfiles/polybar.sh;
-        target = ".config/polybar/launch.sh";
+        source    = ./dotfiles/polybar;
+        target    = ".config/polybar";
+        recursive = true;
       };
     };
   };
@@ -82,17 +83,10 @@ in
         multi-account-containers
         ublock-origin
       ];
+
       profiles = {
         "${default.user.name}" = {
           name = "${default.user.name}";
-          userChrome = ''
-            @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
-
-            /* full screen toolbars */
-            #navigator-toolbox toolbar[moz-collapsed="true"]:not([collapsed="true"]) {
-             visibility:visible!important;
-            }
-          '';
         };
       };
     };
@@ -129,17 +123,22 @@ in
       aliases = {
         co = "checkout";
       };
+
       ignores = ["*.swp" "*.idea" "bin"];
+
       extraConfig = {
         core = {
           editor = "vi";
         };
+
         pull = {
           rebase = true;
         };
+
         push = {
           default = "current";
         };
+
         url."git@github.com:".insteadOf = "https://github.com";
       };
     };
@@ -163,20 +162,22 @@ in
         ignoreSpace = true;
         path = ".config/zsh/.zsh_history";
       };
+
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "sudo" "docker" "terraform" "helm" "bazel" "aws" "vault" "thefuck" ];
         theme = "kolo";
       };
+
       shellAliases = {
         awsso = "eval $AWSSO_CMD";
         k     = "kubectl";
         t     = "terraform";
       };
+
       initExtra =  ''
         stty -ixon
         gpg-connect-agent /bye
-        mon
       '' + builtins.readFile ./dotfiles/functions;
     };
   };
@@ -199,6 +200,11 @@ in
     password-store-sync = {
       enable = false;
       frequency = "*:0/5";
+    };
+
+    random-background = {
+      enable = true;
+      imageDirectory = "%h/.config/nixpkgs/backgrounds";
     };
   };
 }

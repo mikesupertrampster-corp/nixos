@@ -3,6 +3,7 @@
 {
   xsession.windowManager.i3 = {
     enable = true;
+
     config = {
       bars = [];
       menu = "i3-dmenu-desktop";
@@ -13,10 +14,12 @@
         titlebar = false;
         border = 0;
       };
+
       startup = [
         { command = "--no-startup-id compton"; }
         { command = "--no-startup-id ~/.config/polybar/launch.sh"; }
       ];
+
       keybindings = pkgs.lib.mkOptionDefault {
         "XF86AudioLowerVolume"  = "exec amixer sset 'Master' 5%- on";
         "XF86AudioRaiseVolume"  = "exec amixer sset 'Master' 5%+ on";
@@ -30,5 +33,11 @@
         "Print"                 = "exec scrot ~/scrot/%Y-%m-%d_%H-%M-%S.png";
       };
     };
+
+    extraConfig = ''
+      workspace 1 output DP-4
+      workspace 2 output DP-2
+      workspace 3 output HDMI-0
+    '';
   };
 }

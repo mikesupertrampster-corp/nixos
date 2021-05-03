@@ -57,10 +57,10 @@ kenv() {
 }
 
 mon() {
-  autorandr -c crg90-dual
+  autorandr -l default --force
   ~/.config/polybar/launch.sh
 }
 
-gc() {
-  git clone git@github.com:eeveebank/$1.git
+clone() {
+  git clone "git@github.com:eeveebank/$1.git"
 }

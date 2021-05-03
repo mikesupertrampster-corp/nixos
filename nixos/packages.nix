@@ -21,7 +21,7 @@
     #--------------------------------------------------------------------
     acpi alsaUtils arandr bc bind killall lm_sensors pulseaudioFull scrot
     pinentry wirelesstools xorg.xbacklight xorg.xdpyinfo hwinfo pavucontrol
-    thunderbolt bolt usbutils gcc thefuck home-manager
+    thunderbolt bolt usbutils gcc thefuck home-manager 
 
     #--------------------------------------------------------------------
     # work
@@ -35,7 +35,7 @@
     trivy conftest hugo nodejs terraform-landscape terraform_0_14 gh
     golangci-lint
 
-    (python39.withPackages(ps: with ps; [ boto3 ]))
+    (python39.withPackages(ps: with ps; [ boto3 google-api-python-client google-auth-httplib2 google-auth-oauthlib ]))
 
     #--------------------------------------------------------------------
     # Play

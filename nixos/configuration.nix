@@ -64,10 +64,11 @@ in
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
       font-awesome-ttf
-      powerline-fonts
       nerdfonts
       siji
       weather-icons
+      material-icons
+      ipafont
     ];
   };
 
