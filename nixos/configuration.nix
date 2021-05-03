@@ -13,6 +13,7 @@ in
     ./hardware-configuration.nix
     ./packages.nix
     ./system.nix
+    ( import ./jetbrains { config = config; pkgs = pkgs; } )
     (builtins.fetchGit {
       url = "https://github.com/rycee/home-manager.git";
       rev = "ddcd476603dfd3388b1dc8234fa9d550156a51f5";
@@ -66,6 +67,7 @@ in
       powerline-fonts
       nerdfonts
       siji
+      weather-icons
     ];
   };
 

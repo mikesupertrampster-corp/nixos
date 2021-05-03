@@ -33,6 +33,7 @@
     istioctl kind kubeval gitAndTools.pre-commit docker-compose gotools
     stern tig bash docker-credential-gcr ssm-session-manager-plugin
     trivy conftest hugo nodejs terraform-landscape terraform_0_14 gh
+    golangci-lint
 
     (python39.withPackages(ps: with ps; [ boto3 ]))
 

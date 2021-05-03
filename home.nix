@@ -44,9 +44,9 @@ in
         source = ./dotfiles/terminator.conf;
         target = ".config/terminator/config";
       };
-      "screenlayout" = {
-        source = ./dotfiles/screenlayout.sh;
-        target = ".screenlayout/default.sh";
+      "polybar" = {
+        source = ./dotfiles/polybar.sh;
+        target = ".config/polybar/launch.sh";
       };
     };
   };
@@ -116,6 +116,10 @@ in
       };
     };
 
+    rofi = {
+      enable = true;
+    };
+
     git = {
       enable                = true;
       userName              = default.work.name;
@@ -172,6 +176,7 @@ in
       initExtra =  ''
         stty -ixon
         gpg-connect-agent /bye
+        mon
       '' + builtins.readFile ./dotfiles/functions;
     };
   };

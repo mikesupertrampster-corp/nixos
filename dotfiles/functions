@@ -57,6 +57,10 @@ kenv() {
 }
 
 mon() {
-  ~/.screenlayout/default.sh
+  autorandr -c crg90-dual
   ~/.config/polybar/launch.sh
+}
+
+gc() {
+  git clone git@github.com:eeveebank/$1.git
 }

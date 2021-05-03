@@ -24,6 +24,7 @@ in
         };
         "bar/top" = {
           monitor = "\${env:MONITOR:}";
+          enable-ipc = "true";
           width = "100%";
           height = "35";
           fixed-center = "false";
@@ -31,6 +32,7 @@ in
           foreground = "\${colors.foreground}";
           font-0 = "3270Narrow Nerd Font:size=15;2";
           font-1 = "Siji:size=18;2";
+          font-2 = "Weather Icons:size=12;1";
           tray-position = "right";
           tray-padding = "6";
           scroll-up = "i3wm-wsnext";
