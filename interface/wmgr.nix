@@ -6,7 +6,7 @@
 
     config = {
       bars = [];
-      menu = "i3-dmenu-desktop";
+      menu = "rofi -show drun";
       fonts = [ "pango:monospace 15" ];
       modifier = "Mod4";
       terminal = "i3-sensible-terminal";

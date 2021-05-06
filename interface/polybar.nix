@@ -15,15 +15,16 @@
         };
 
         "bar/top"= {
-          monitor       = "\${env:MONITOR:}";
-          enable-ipc    = true;
-          height        = 40;
-          line-size     = 2;
-          background    = "#0000";
-          tray-position = "right";
-          tray-offset-x = -15;
-          padding-right = 3;
-          module-margin = 2;
+          monitor          = "\${env:MONITOR:}";
+          enable-ipc       = true;
+          height           = 40;
+          line-size        = 2;
+          background       = "#0000";
+          tray-position    = "right";
+          tray-offset-x    = -15;
+          tray-transparent = true;
+          padding-right    = 3;
+          module-margin    = 2;
 
           font-0 = "Siji:size=18;4";
           font-1 = "Font Awesome 5 Brands Regular:size=11;2";

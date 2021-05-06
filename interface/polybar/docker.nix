@@ -1,6 +1,6 @@
 {
   type     = "custom/script";
-  exec     = "docker ps -q | wc -l";
+  exec     = "docker images -q | wc -l";
   interval = 600;
   label    = " %output%";
 }
