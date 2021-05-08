@@ -46,14 +46,6 @@ in
       PASSWORD_STORE_KEY = default.work.alt;
       PASSWORD_STORE_GIT = default.work.passwordstore.git;
     };
-
-    file = {
-      "polybar" = {
-        source    = ./dotfiles/polybar;
-        target    = ".config/polybar";
-        recursive = true;
-      };
-    };
   };
 
   programs = {

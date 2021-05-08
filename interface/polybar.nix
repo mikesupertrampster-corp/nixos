@@ -1,10 +1,21 @@
 { pkgs, lib, ... }:
 
+let
+  dir = ".config/polybar";
+in
 {
+  home.file = {
+    "polybar" = {
+      source    = ./polybar/scripts;
+      target    = dir;
+      recursive = true;
+    };
+  };
+
   services = {
     polybar = {
       enable = true;
-      script = "~/.config/polybar/launch.sh";
+      script = "~/${dir}/launch.sh";
       package = pkgs.polybar.override {
         i3Support = true;
       };
