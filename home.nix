@@ -1,11 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   default = import (pkgs.fetchFromGitHub {
      owner  = "mikesupertrampster";
      repo   = "nixos";
-     rev    = "3c04fed20b6efc27f5f8986593033b27d3b97307";
-     sha256 = "sha256:13ccqhh72j479x5c6xj6c579fin024wgra0nsxkpd7jhrafm0555";
+     rev    = "7430c9c4083c176e4205c88c00cb5fe725838d00";
+     sha256 = "sha256:018drcpgp2a3h2z65l9djq4zhdyjr3gknjmmakg6h1a93px4cqm8";
   });
 in
 {
@@ -19,10 +19,11 @@ in
   };
 
   imports = [
+    ./interface/alacrity.nix
+    ./interface/i3.nix
     ./interface/monitor.nix
     ./interface/polybar.nix
     ./interface/rofi.nix
-    ./interface/wmgr.nix
   ];
 
   home = {
@@ -31,7 +32,13 @@ in
     keyboard.layout = default.locale.keyboard.layout;
 
     sessionVariables = {
-      AWSSO_CMD          = "docker run --rm -it -v ~/.aws:/home/mettle/.aws --network host $(pass onelogin/image) --profile default -u $(whoami) --onelogin-password $(pass mettle/onelogin/password)";
+      AWSSO_CMD          = ''docker run --rm -it
+                              -v ~/.aws:/home/mettle/.aws
+                              --network host $(pass onelogin/image)
+                              --profile default
+                              -u $(whoami)
+                              --onelogin-password $(pass mettle/onelogin/password)'';
+
       GPG_TTY            = "$(tty)";
       KUBE_EDITOR        = "vi";
       SSH_AUTH_SOCK      = "$(gpgconf --list-dirs agent-ssh-socket)";
@@ -41,10 +48,6 @@ in
     };
 
     file = {
-      "terminator" = {
-        source = ./dotfiles/terminator.conf;
-        target = ".config/terminator/config";
-      };
       "polybar" = {
         source    = ./dotfiles/polybar;
         target    = ".config/polybar";
@@ -101,15 +104,6 @@ in
       enable = true;
       enableZshIntegration = true;
       keyScheme = "vim";
-    };
-
-    alacritty = {
-      enable = true;
-      settings = {
-        font.size = 11;
-        shell.program = "/run/current-system/sw/bin/zsh";
-#        mouse_bindings =
-      };
     };
 
     git = {

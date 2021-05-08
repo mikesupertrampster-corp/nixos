@@ -9,7 +9,7 @@
       menu = "rofi -show drun";
       fonts = [ "pango:monospace 15" ];
       modifier = "Mod4";
-      terminal = "i3-sensible-terminal";
+      terminal = "alacritty";
       window = {
         titlebar = false;
         border = 0;

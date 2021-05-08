@@ -13,7 +13,7 @@ in
     ./hardware-configuration.nix
     ./packages.nix
     ./system.nix
-    ( import ./jetbrains { config = config; pkgs = pkgs; } )
+    # ( import ./jetbrains { config = config; pkgs = pkgs; } )
     (builtins.fetchGit {
       url = "https://github.com/rycee/home-manager.git";
       rev = "ddcd476603dfd3388b1dc8234fa9d550156a51f5";
@@ -37,8 +37,7 @@ in
 
   console.font = default.locale.console.font;
   time.timeZone = default.locale.timeZone;
-  i18n.defaultLocale  = default.locale.i18n;
-
+  
   hardware = {
     cpu.intel.updateMicrocode = true;
     facetimehd.enable = true;
