@@ -57,7 +57,7 @@ kenv() {
 }
 
 mon() {
-  autorandr -l default --force
+  autorandr -l default --force --default
   ~/.config/polybar/launch.sh
 }
 

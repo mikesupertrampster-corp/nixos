@@ -18,4 +18,7 @@
     console.font    = "Lat2-Terminus16";
     timeZone        = "Europe/London";
   };
+  bluetooth = {
+    edifier = "04:FE:A1:D9:A7:FD";
+  };
 }
