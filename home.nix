@@ -32,11 +32,8 @@ in
     keyboard.layout = default.locale.keyboard.layout;
 
     sessionVariables = {
-      AWSSO_CMD          = ''docker run --rm -it
-                              -v ~/.aws:/home/mettle/.aws
-                              --network host $(pass onelogin/image)
-                              --profile default
-                              -u $(whoami)
+      AWSSO_CMD          = ''docker run --rm -it -v ~/.aws:/home/mettle/.aws --network host \
+                              $(pass onelogin/image) --profile default -u $(whoami) \
                               --onelogin-password $(pass mettle/onelogin/password)'';
 
       GPG_TTY            = "$(tty)";
@@ -154,9 +151,9 @@ in
       };
 
       shellAliases = {
-        awsso = "eval $AWSSO_CMD";
-        k     = "kubectl";
-        t     = "terraform";
+        a = "eval $AWSSO_CMD";
+        k = "kubectl";
+        t = "terraform";
       };
 
       initExtra =  ''
@@ -196,11 +193,11 @@ in
     edifier = {
       Unit = {
         Description = "Automatically connect to edifier speakers";
-        Type        = "simple";
-        WantedBy    = "graphical-session.target";
-        After       = "graphical-session.target";
+        Requires    = "graphical-session.target bluetooth.target";
+        After       = "graphical-session.target bluetooth.target";
       };
       Service = {
+        Type      = "oneshot";
         ExecStart = "/run/current-system/sw/bin/bluetoothctl connect ${default.bluetooth.edifier}";
       };
     };
