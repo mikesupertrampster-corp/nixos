@@ -200,6 +200,9 @@ in
         Type      = "oneshot";
         ExecStart = "/run/current-system/sw/bin/bluetoothctl connect ${default.bluetooth.edifier}";
       };
+      Install = {
+        WantedBy = ["graphical-session.target" "bluetooth.target"];
+      };
     };
   };
 }
