@@ -153,7 +153,7 @@ in
       shellAliases = {
         a = "eval $AWSSO_CMD";
         k = "kubectl";
-        t = "terraform";
+        t = "/usr/local/bin/terraform";
       };
 
       initExtra =  ''
