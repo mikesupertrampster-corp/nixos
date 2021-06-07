@@ -19,9 +19,9 @@ clearssh() {
   eval $(ssh-agent)
 }
 
-ol_creds() {
-  export ONELOGIN_CLIENT_ID=$(pass mettle/onelogin/sandbox/id)
-  export ONELOGIN_CLIENT_SECRET=$(pass mettle/onelogin/sandbox/secret)
+o_creds() {
+  export ONELOGIN_CLIENT_ID=$(pass mettle/onelogin/cli/id)
+  export ONELOGIN_CLIENT_SECRET=$(pass mettle/onelogin/cli/secret)
   export ONELOGIN_OAPI_URL=https://api.eu.onelogin.com
 }
 

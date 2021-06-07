@@ -103,6 +103,7 @@ in
       signing.signByDefault = true;
       aliases = {
         co = "checkout";
+        cl = "clone";
       };
 
       ignores = ["*.swp" "*.idea" "bin"];
@@ -151,9 +152,16 @@ in
       };
 
       shellAliases = {
-        a = "eval $AWSSO_CMD";
-        k = "kubectl";
-        t = "/usr/local/bin/terraform";
+        a     = "eval $AWSSO_CMD";
+        ao    = "eval $AWSSO_CMD --onelogin-app-id 382920";
+        k     = "kubectl";
+        sound = "systemctl --user start edifier";
+        t     = "/usr/local/bin/terraform";
+        tg    = "terragrunt";
+        ta    = "t apply";
+        ti    = "t import";
+        taa   = "t apply --auto-approve";
+        tp    = "t plan";
       };
 
       initExtra =  ''
