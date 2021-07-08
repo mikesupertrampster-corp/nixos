@@ -99,11 +99,12 @@ in
       enable                = true;
       userName              = default.work.name;
       userEmail             = default.work.email;
-      signing.key           = default.work.gpg;
+      signing.key           = "5DD715C45B3E5F63";
       signing.signByDefault = true;
       aliases = {
         co = "checkout";
         cl = "clone";
+        r  = "reset";
       };
 
       ignores = ["*.swp" "*.idea" "bin"];
@@ -129,6 +130,19 @@ in
       enable = true;
       compression = false;
       forwardAgent = true;
+
+      matchBlocks = {
+        "127.0.0.1" = {
+          user = "core";
+          certificateFile = [
+            "~/.ssh/id_rsa-cert.pub"
+            "~/.ssh/id_rsa"
+          ];
+          extraOptions = {
+            StrictHostKeyChecking = "no";
+          };
+        };
+      };
     };
 
     zsh = {
@@ -155,6 +169,7 @@ in
         a     = "eval $AWSSO_CMD";
         ao    = "eval $AWSSO_CMD --onelogin-app-id 382920";
         k     = "kubectl";
+        gcm   = "git checkout master";
         sound = "systemctl --user start edifier";
         t     = "/usr/local/bin/terraform";
         tg    = "terragrunt";

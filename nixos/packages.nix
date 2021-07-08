@@ -5,8 +5,8 @@
     #--------------------------------------------------------------------
     # interface
     #--------------------------------------------------------------------
-    compton dmenu feh i3 i3blocks i3lock i3lock-color
-    networkmanagerapplet polybar nitrogen betterlockscreen autorandr
+    autorandr compton feh nitrogen networkmanagerapplet betterlockscreen
+    dmenu polybar i3 i3blocks i3lock i3lock-color
 
     #--------------------------------------------------------------------
     # utilities
@@ -25,20 +25,19 @@
     #--------------------------------------------------------------------
     # work
     #--------------------------------------------------------------------
-    awscli2 docker git slack gnupg aws kubectx fluxctl perl golangci-lint
-    kubectl aws-iam-authenticator openssl packer openjdk11 kustomize
-    vault consul-template jetbrains.idea-ultimate pre-commit yq
-    gnumake bazel go citrix_workspace google-cloud-sdk kubernetes-helm
-    istioctl kind kubeval gitAndTools.pre-commit docker-compose gotools
-    stern tig bash docker-credential-gcr ssm-session-manager-plugin
-    trivy conftest hugo nodejs terraform-landscape terraform_0_15 gh
-
+    aws awscli2 aws-iam-authenticator ssm-session-manager-plugin
+    docker-credential-gcr google-cloud-sdk istioctl
+    bash conftest docker docker-compose git tig trivy yq
+    bazel go golangci-lint gotools gnumake gnupg openssl openjdk11 perl
+    gh jetbrains.idea-ultimate slack
+    fluxctl kind kubeval kubectx kubectl kubernetes-helm kustomize stern
+    boundary consul-template packer terraform terragrunt vault
     (python39.withPackages(ps: with ps; [ boto3 google-api-python-client google-auth-httplib2 google-auth-oauthlib ]))
 
     #--------------------------------------------------------------------
     # Play
     #--------------------------------------------------------------------
-    spotify signal-desktop
+    signal-desktop
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];
