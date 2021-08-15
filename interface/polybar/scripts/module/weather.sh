@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 API="https://api.openweathermap.org/data/2.5"
-KEY=$(pass weather)
+KEY=35f842474949adef5b04088f20ed6ad1
 CITY="Glasgow, GB"
 UNITS="metric"
 SYMBOL="°"

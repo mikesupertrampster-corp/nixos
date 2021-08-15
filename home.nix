@@ -31,11 +31,11 @@ in
     username        = default.user.name;
     keyboard.layout = default.locale.keyboard.layout;
 
-    sessionVariables = {
-      AWSSO_CMD          = ''docker run --rm -it -v ~/.aws:/home/mettle/.aws --network host \
-                              $(pass onelogin/image) --profile default -u $(whoami) \
-                              --onelogin-password $(pass mettle/onelogin/password)'';
+    packages = [
+      pkgs.nodePackages.snyk
+    ];
 
+    sessionVariables = {
       GPG_TTY            = "$(tty)";
       KUBE_EDITOR        = "vi";
       SSH_AUTH_SOCK      = "$(gpgconf --list-dirs agent-ssh-socket)";
@@ -135,8 +135,8 @@ in
         "127.0.0.1" = {
           user = "core";
           certificateFile = [
-            "~/.ssh/id_rsa-cert.pub"
-            "~/.ssh/id_rsa"
+            "~/.ssh/id_ecdsa-cert.pub"
+            "~/.ssh/id_ecdsa"
           ];
           extraOptions = {
             StrictHostKeyChecking = "no";
@@ -166,14 +166,14 @@ in
       };
 
       shellAliases = {
-        a     = "eval $AWSSO_CMD";
-        ao    = "eval $AWSSO_CMD --onelogin-app-id 382920";
+        g     = "git";
         k     = "kubectl";
         gcm   = "git checkout master";
         sound = "systemctl --user start edifier";
         t     = "/usr/local/bin/terraform";
         tg    = "terragrunt";
         ta    = "t apply";
+        tfu   = "t force-unlock -force";
         ti    = "t import";
         taa   = "t apply --auto-approve";
         tp    = "t plan";
@@ -182,7 +182,7 @@ in
       initExtra =  ''
         stty -ixon
         gpg-connect-agent /bye
-      '' + builtins.readFile ./dotfiles/functions;
+      '' + builtins.readFile ./dotfiles/functions.sh;
     };
   };
 

@@ -77,6 +77,29 @@
           };
         };
 
+        key_bindings = [
+          {
+            action = "Copy";
+            key    = "C";
+            mods   = "Control";
+          }
+          {
+            action = "ReceiveChar";
+            key    = "C";
+            mods   = "Control|Shift";
+          }
+          {
+            action = "Paste";
+            key    = "V";
+            mods   = "Control";
+          }
+          {
+            action = "ReceiveChar";
+            key    = "V";
+            mods   = "Control|Shift";
+          }
+        ];
+
         mouse_bindings = [
           {
             mouse  = "Middle";

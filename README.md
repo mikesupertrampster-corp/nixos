@@ -11,6 +11,6 @@
 ```
 
 ```
-  ln -s ~michael.liu/.config/nixpkgs/nixos/one/*.nix .
-  ln -s ~michael.liu/.config/nixpkgs/nixos/*.nix .
+export NIX_PATH="nixos-config=$(pwd)"
+nixos-rebuild switch
 ```
