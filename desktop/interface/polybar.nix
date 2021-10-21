@@ -44,7 +44,7 @@ in
           font-3 = "Weather Icons:size=12;1";
 
           modules-left  = "i3";
-          modules-right = "audio memory cpu temperature fs docker weather date";
+          modules-right = "audio memory cpu temperature fs docker date";
         };
 
         "module/audio"       = import polybar/audio.nix;
@@ -55,7 +55,6 @@ in
         "module/i3"          = import polybar/i3.nix;
         "module/memory"      = import polybar/memory.nix;
         "module/temperature" = import polybar/temperature.nix;
-        "module/weather"     = import polybar/weather.nix;
         "module/wifi"        = import polybar/wifi.nix;
       };
     };

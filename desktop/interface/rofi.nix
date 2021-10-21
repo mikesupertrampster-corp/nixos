@@ -36,6 +36,7 @@
           aurora-5 = mkLiteral "#B48EAD";
 
           background-color = mkLiteral "@polar-1";
+          text-color = mkLiteral "@aurora-3";
 
           border = 0;
           margin = 0;
@@ -43,19 +44,12 @@
           spacing = 0;
         };
 
-        "element" = {
-          padding = 12;
-          text-color = mkLiteral "@frost-3";
+        "window" = {
+          transparency = "real";
         };
 
-        "element selected" = {
-          text-color = mkLiteral "@aurora-3";
-        };
-
-        "entry" = {
-          background-color = mkLiteral "@polar-2";
-          padding = mkLiteral "12 0 12 3";
-          text-color = mkLiteral "@frost-1";
+        "mainbox" = {
+          children = map mkLiteral ["inputbar" "listview"];
         };
 
         "inputbar" = {
@@ -67,10 +61,6 @@
           lines = 8;
         };
 
-        "mainbox" = {
-          children = map mkLiteral ["inputbar" "listview"];
-        };
-
         "prompt" = {
           background-color = mkLiteral "@polar-2";
           enabled = true;
@@ -79,8 +69,18 @@
           text-color = mkLiteral "@frost-1";
         };
 
-        "window" = {
-          transparency = "real";
+        "entry" = {
+          background-color = mkLiteral "@polar-2";
+          padding = mkLiteral "12 0 12 3";
+          text-color = mkLiteral "@frost-1";
+        };
+
+        "element" = {
+          padding = 12;
+          text-color = mkLiteral "@frost-3";
+        };
+        "element selected" = {
+          text-color = mkLiteral "@aurora-3";
         };
       };
     };
