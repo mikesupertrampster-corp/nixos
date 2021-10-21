@@ -42,7 +42,7 @@ in
       MCFLY_RESULTS_SORT  = "LAST_RUN";
       SSH_AUTH_SOCK       = "$(gpgconf --list-dirs agent-ssh-socket)";
       PASSWORD_STORE_DIR  = "${default.user.home}/.password-store";
-      PASSWORD_STORE_KEY  = "sivinh.liu@rbs.com";
+      PASSWORD_STORE_KEY  = default.work.email;
       PASSWORD_STORE_GIT  = default.work.passwordstore.git;
       TF_PLUGIN_CACHE_DIR = "${default.user.home}/Downloads/terraform-cache";
     };
