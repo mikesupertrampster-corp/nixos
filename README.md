@@ -10,7 +10,11 @@
 }
 ```
 
-```
+```bash
 export NIX_PATH="nixos-config=$(pwd)"
 nixos-rebuild switch
+```
+
+```bash
+nixos-rebuild switch -I nixos-config=/home/mike/.config/nixpkgs/nixos
 ```
