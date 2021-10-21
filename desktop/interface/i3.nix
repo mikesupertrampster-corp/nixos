@@ -35,9 +35,9 @@
     };
 
     extraConfig = ''
-      workspace 1 output DP-4
-      workspace 2 output DP-2
-      workspace 3 output HDMI-0
+      workspace 1 output DP-2
+      workspace 2 output HDMI-0
+      workspace 3 output DP-4
     '';
   };
 }

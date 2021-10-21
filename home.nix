@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   default = import (pkgs.fetchFromGitHub {
      owner  = "mikesupertrampster";
      repo   = "nixos";
-     rev    = "7430c9c4083c176e4205c88c00cb5fe725838d00";
-     sha256 = "sha256:018drcpgp2a3h2z65l9djq4zhdyjr3gknjmmakg6h1a93px4cqm8";
+     rev    = "be04fbda4f5a8f6149cc991b2f28cc95c8111b28";
+     sha256 = "sha256:1v82jn606iw9rbw7d4ma29v8ighjvfv4wzazad765ha4akszzlw4";
   });
 in
 {
@@ -19,11 +19,10 @@ in
   };
 
   imports = [
-    ./interface/alacrity.nix
-    ./interface/i3.nix
-    ./interface/monitor.nix
-    ./interface/polybar.nix
-    ./interface/rofi.nix
+    ./desktop/interface/alacrity.nix
+    ./desktop/interface/i3.nix
+    ./desktop/interface/polybar.nix
+    ./desktop/interface/rofi.nix
   ];
 
   home = {
@@ -36,12 +35,16 @@ in
     ];
 
     sessionVariables = {
-      GPG_TTY            = "$(tty)";
-      KUBE_EDITOR        = "vi";
-      SSH_AUTH_SOCK      = "$(gpgconf --list-dirs agent-ssh-socket)";
-      PASSWORD_STORE_DIR = "${default.user.home}/.password-store";
-      PASSWORD_STORE_KEY = default.work.alt;
-      PASSWORD_STORE_GIT = default.work.passwordstore.git;
+      GPG_TTY             = "$(tty)";
+      KUBE_EDITOR         = "vi";
+      MCFLY_FUZZY         = true;
+      MCFLY_RESULTS       = 50;
+      MCFLY_RESULTS_SORT  = "LAST_RUN";
+      SSH_AUTH_SOCK       = "$(gpgconf --list-dirs agent-ssh-socket)";
+      PASSWORD_STORE_DIR  = "${default.user.home}/.password-store";
+      PASSWORD_STORE_KEY  = "sivinh.liu@rbs.com";
+      PASSWORD_STORE_GIT  = default.work.passwordstore.git;
+      TF_PLUGIN_CACHE_DIR = "${default.user.home}/Downloads/terraform-cache";
     };
   };
 
@@ -91,7 +94,7 @@ in
 
     mcfly = {
       enable = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       keyScheme = "vim";
     };
 
@@ -99,15 +102,13 @@ in
       enable                = true;
       userName              = default.work.name;
       userEmail             = default.work.email;
-      signing.key           = "5DD715C45B3E5F63";
+      signing.key           = default.work.sign;
       signing.signByDefault = true;
       aliases = {
         co = "checkout";
-        cl = "clone";
-        r  = "reset";
       };
 
-      ignores = ["*.swp" "*.idea" "bin"];
+      ignores = ["*.swp" "*.idea" "bin" "result"];
 
       extraConfig = {
         core = {
@@ -161,17 +162,14 @@ in
 
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" "sudo" "docker" "terraform" "helm" "bazel" "aws" "vault" "thefuck" ];
+        plugins = [ "git" "sudo" "docker" "terraform" "helm" "aws" "vault" "kubectx" "kubectl" ];
         theme = "kolo";
       };
 
       shellAliases = {
-        g     = "git";
-        k     = "kubectl";
         gcm   = "git checkout master";
         sound = "systemctl --user start edifier";
-        t     = "/usr/local/bin/terraform";
-        tg    = "terragrunt";
+        t     = "terraform";
         ta    = "t apply";
         tfu   = "t force-unlock -force";
         ti    = "t import";
@@ -182,7 +180,9 @@ in
       initExtra =  ''
         stty -ixon
         gpg-connect-agent /bye
-      '' + builtins.readFile ./dotfiles/functions.sh;
+        eval "$(mcfly init zsh)"
+      '' + builtins.readFile ./desktop/interface/terminal/functions.sh
+      + builtins.readFile ./desktop/interface/terminal/work.sh;
     };
   };
 
@@ -208,7 +208,7 @@ in
 
     random-background = {
       enable = true;
-      imageDirectory = "%h/.config/nixpkgs/backgrounds";
+      imageDirectory = "%h/.config/nixpkgs/desktop/backgrounds";
     };
   };
 

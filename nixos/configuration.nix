@@ -4,19 +4,18 @@ let
   default = import (pkgs.fetchFromGitHub {
      owner  = "mikesupertrampster";
      repo   = "nixos";
-     rev    = "f01b9484476f1d04d35e0bedeb8793c386158c0c";
-     sha256 = "sha256:0m24dw1zbz6yrdiwmz6n2dmmyjbx2qj5v4xqdv4qvs71vz0cqm7z";
+     rev    = "be04fbda4f5a8f6149cc991b2f28cc95c8111b28";
+     sha256 = "sha256:1v82jn606iw9rbw7d4ma29v8ighjvfv4wzazad765ha4akszzlw4";
    });
 in
 {
   imports = [
     ./hardware-configuration.nix
-    ./packages.nix
     ./system.nix
-    # ( import ./jetbrains { config = config; pkgs = pkgs; } )
+    ./packages.nix
     (builtins.fetchGit {
       url = "https://github.com/rycee/home-manager.git";
-      rev = "ddcd476603dfd3388b1dc8234fa9d550156a51f5";
+      rev = "91155a98ed126553deb8696b25556d782d2a5450";
     } + "/nixos")
   ];
 
@@ -33,12 +32,13 @@ in
   networking = {
     networkmanager.enable = true;
     nameservers = ["8.8.8.8" "4.4.4.4"];
+    firewall.allowedTCPPortRanges = [ { from = 24800; to = 24800; } ];
   };
 
-  console.font = default.locale.console.font;
   time.timeZone = default.locale.timeZone;
   
   hardware = {
+    bluetooth.enable = true;
     cpu.intel.updateMicrocode = true;
     facetimehd.enable = true;
     pulseaudio = {
@@ -46,7 +46,6 @@ in
       package = pkgs.pulseaudioFull;
       support32Bit = true;
     };
-    bluetooth.enable = true;
   };
 
   nixpkgs.config = {

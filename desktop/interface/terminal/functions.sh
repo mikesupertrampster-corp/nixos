@@ -26,8 +26,3 @@ branch() {
   git checkout -b $1
   git stash pop
 }
-
-mon() {
-  autorandr -l default --force --default
-  ~/.config/polybar/launch.sh
-}

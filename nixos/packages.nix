@@ -11,10 +11,10 @@
     #--------------------------------------------------------------------
     # utilities
     #--------------------------------------------------------------------
-    alacritty chromium firefox gnome2.GConf gnome3.dconf 
+    alacritty chromium firefox gnome2.GConf gnome3.dconf mcfly
     gnome3.gnome-screenshot graphviz imagemagick jq lshw mpc_cli pciutils
-    pmutils powertop telnet tigervnc undervolt unzip update-resolv-conf 
-    vim wget xclip zip
+    pmutils powertop synergy telnet tigervnc undervolt unzip
+    update-resolv-conf vim wget xclip zip
 
     #--------------------------------------------------------------------
     # system
@@ -28,8 +28,8 @@
     #--------------------------------------------------------------------
     aws-iam-authenticator awscli2 bash bazel boundary conftest
     consul-template docker docker-compose docker-credential-gcr fluxctl
-    gh git gnumake gnupg go golangci-lint google-cloud-sdk gotools
-    home-manager istioctl jetbrains.idea-ultimate kind kubectl
+    gh git gnumake gnupg go golangci-lint google-cloud-sdk goreleaser
+    gotools home-manager istioctl jetbrains.idea-ultimate kind kubectl
     kubectx kubernetes-helm kubeval kustomize lastpass-cli nix-index
     nodePackages.snyk open-policy-agent openjdk11 openjfx11 opensc
     openssl packer pacman perl pkcs11helper slack
@@ -52,10 +52,7 @@
 
   programs.zsh = {
     enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "sudo" "docker" "kubectl" "terraform" "helm" "bazel" "aws" "vault" "thefuck" ];
-    };
+    ohMyZsh.enable = true;
   };
 
   virtualisation = {
