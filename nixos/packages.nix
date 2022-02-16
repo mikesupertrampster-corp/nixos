@@ -5,16 +5,17 @@
     #--------------------------------------------------------------------
     # interface
     #--------------------------------------------------------------------
-    autorandr betterlockscreen compton dmenu feh i3 i3blocks i3lock 
+    autorandr betterlockscreen compton dmenu feh i3 i3blocks i3lock
     i3lock-color networkmanagerapplet nitrogen polybar
 
     #--------------------------------------------------------------------
     # utilities
     #--------------------------------------------------------------------
-    alacritty chromium firefox gnome2.GConf gnome3.dconf mcfly
+    alacritty chromium firefox gnome2.GConf mcfly
     gnome3.gnome-screenshot graphviz imagemagick jq lshw mpc_cli pciutils
     pmutils powertop synergy telnet tigervnc undervolt unzip
     update-resolv-conf vim wget xclip zip
+    texlive.combined.scheme-full
 
     #--------------------------------------------------------------------
     # system
@@ -29,7 +30,7 @@
     aws-iam-authenticator awscli2 bash bazel boundary conftest
     consul-template docker docker-compose docker-credential-gcr fluxctl
     gh git gnumake gnupg go golangci-lint google-cloud-sdk goreleaser
-    gotools home-manager istioctl jetbrains.idea-ultimate kind kubectl
+    gotools home-manager istioctl jetbrains.idea-community kind kubectl
     kubectx kubernetes-helm kubeval kustomize lastpass-cli nix-index
     nodePackages.snyk open-policy-agent openjdk11 openjfx11 opensc
     openssl packer pacman perl pkcs11helper slack

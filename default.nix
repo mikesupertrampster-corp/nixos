@@ -1,16 +1,11 @@
 {
   user = {
-    name = "michael.liu";
-    home = "/home/mike";
+    name  = "michael.liu";
+    home  = "/home/mike";
+    email = "mikesupertrampster@gmail.com";
+    sign  = "1C98F93641120504";
   };
-  work = {
-    name          = "mliu-mettle";
-    email         = "michael.liu@mettle.co.uk";
-    sign          = "5DD715C45B3E5F63";
-    passwordstore = {
-      git = "git@github.com:mliu-mettle/password-store.git";
-    };
-  };
+  work = {};
   locale = {
     i18n            = "en_GB.UTF-8";
     keyboard.layout = "us";

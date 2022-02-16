@@ -36,9 +36,8 @@ in
   };
 
   time.timeZone = default.locale.timeZone;
-  
+
   hardware = {
-    bluetooth.enable = true;
     cpu.intel.updateMicrocode = true;
     facetimehd.enable = true;
     pulseaudio = {
@@ -46,6 +45,7 @@ in
       package = pkgs.pulseaudioFull;
       support32Bit = true;
     };
+    bluetooth.enable = true;
   };
 
   nixpkgs.config = {
