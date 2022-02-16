@@ -7,7 +7,10 @@
     config = {
       bars = [];
       menu = "rofi -show drun";
-      fonts = [ "pango:monospace 15" ];
+      fonts = {
+        names = [ "pango:monospace" ];
+        size  = 15.0;
+      };
       modifier = "Mod4";
       terminal = "alacritty";
       window = {

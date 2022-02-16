@@ -2,10 +2,10 @@
 
 let
   default = import (pkgs.fetchFromGitHub {
-     owner  = "mikesupertrampster";
-     repo   = "nixos";
-     rev    = "ab0081a63efe2a40e5f3e5d6ac55eb61c2cba538";
-     sha256 = "sha256:I9GhJFpQVcCqLEUQEyowhIB2bwCx13+3fc88t0a1LZs=";
+    owner  = "mikesupertrampster";
+    repo   = "nixos";
+    rev    = "033c3863e729a51749949ad3c688bc51f1a2b45b";
+    sha256 = "sha256:HmC7ypvTNT1wQYYw6ggQAa30RqynpP3S0/STFUhEEbQ=";
   });
 in
 {
@@ -41,9 +41,9 @@ in
       MCFLY_RESULTS       = 50;
       MCFLY_RESULTS_SORT  = "LAST_RUN";
       SSH_AUTH_SOCK       = "$(gpgconf --list-dirs agent-ssh-socket)";
-#      PASSWORD_STORE_DIR  = "${default.user.home}/.password-store";
-#      PASSWORD_STORE_KEY  = default.work.email;
-#      PASSWORD_STORE_GIT  = default.work.passwordstore.git;
+      PASSWORD_STORE_DIR  = "${default.user.home}/.password-store";
+      PASSWORD_STORE_KEY  = default.user.email;
+      PASSWORD_STORE_GIT  = "git@github.com:mikesupertrampster/pass.git";
       TF_PLUGIN_CACHE_DIR = "${default.user.home}/Downloads/terraform-cache";
     };
   };
@@ -100,7 +100,7 @@ in
 
     git = {
       enable                = true;
-      userName              = default.user.email;
+      userName              = default.user.user;
       userEmail             = default.user.email;
       signing.key           = default.user.sign;
       signing.signByDefault = true;
