@@ -1,10 +1,10 @@
 {
   user = {
-    name  = "michael.liu";
-    home  = "/home/mike";
-    email = "mikesupertrampster@gmail.com";
-    sign  = "1C98F93641120504";
-    user  = "mikesupertrampster";
+    name   = "michael.liu";
+    handle = "mikesupertrampster";
+    home   = "/home/mike";
+    email  = "mikesupertrampster@gmail.com";
+    sign   = "1C98F93641120504";
   };
   work = {};
   locale = {
