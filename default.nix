@@ -4,6 +4,7 @@
     home  = "/home/mike";
     email = "mikesupertrampster@gmail.com";
     sign  = "1C98F93641120504";
+    user  = "mikesupertrampster";
   };
   work = {};
   locale = {
