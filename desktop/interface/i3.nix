@@ -20,7 +20,7 @@
 
       startup = [
         { command = "--no-startup-id compton"; }
-        { command = "--no-startup-id ~/.config/polybar/launch.sh"; }
+        { command = "--no-startup-id ~/.config/nixpkgs/desktop/interface/polybar/scripts/launch.sh"; }
       ];
 
       keybindings = pkgs.lib.mkOptionDefault {
@@ -38,9 +38,6 @@
     };
 
     extraConfig = ''
-      workspace 1 output DP-2
-      workspace 2 output HDMI-0
-      workspace 3 output DP-4
     '';
   };
 }

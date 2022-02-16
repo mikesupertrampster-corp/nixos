@@ -5,10 +5,10 @@
     alacritty = {
       enable = true;
       settings = {
-        font.size          = 19;
-        shell.program      = "/run/current-system/sw/bin/zsh";
-        background_opacity = 0.9;
-        cursor_style       = "Beam";
+        font.size      = 19;
+        shell.program  = "/run/current-system/sw/bin/zsh";
+        window.opacity = 0.9;
+        cursor_style   = "Beam";
 
         colors = {
           primary = {
