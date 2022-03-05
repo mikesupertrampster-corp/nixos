@@ -44,10 +44,11 @@ in
           font-3 = "Weather Icons:size=12;1";
 
           modules-left  = "i3";
-          modules-right = "audio memory cpu temperature fs docker date";
+          modules-right = "battery audio memory cpu temperature fs docker date";
         };
 
         "module/audio"       = import polybar/audio.nix;
+        "module/battery"     = import polybar/battery.nix;
         "module/cpu"         = import polybar/cpu.nix;
         "module/date"        = import polybar/date.nix;
         "module/docker"      = import polybar/docker.nix;

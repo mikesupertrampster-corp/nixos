@@ -33,7 +33,7 @@
     gotools home-manager istioctl jetbrains.idea-community kind kubectl
     kubectx kubernetes-helm kubeval kustomize lastpass-cli nix-index
     nodePackages.snyk open-policy-agent openjdk11 openjfx11 opensc
-    openssl packer pacman perl pkcs11helper slack
+    openssl packer pacman perl pkcs11helper slack vagrant
     ssm-session-manager-plugin stern terraform terragrunt tig trivy
     vault yq yubico-piv-tool yubikey-personalization
 
