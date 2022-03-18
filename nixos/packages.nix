@@ -13,7 +13,7 @@
     #--------------------------------------------------------------------
     alacritty chromium firefox gnome2.GConf mcfly
     gnome3.gnome-screenshot graphviz imagemagick jq lshw mpc_cli pciutils
-    pmutils powertop synergy telnet tigervnc undervolt unzip
+    pmutils powertop synergy inetutils tigervnc undervolt unzip
     update-resolv-conf vim wget xclip zip
     texlive.combined.scheme-full
 
@@ -45,7 +45,7 @@
     #--------------------------------------------------------------------
     # Play
     #--------------------------------------------------------------------
-    signal-desktop
+    signal-desktop spotify
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];
@@ -58,5 +58,8 @@
 
   virtualisation = {
     docker.enable = true;
+    virtualbox.host.enable = true;
   };
+
+  users.extraGroups.vboxusers.members = [ "michael.liu" ];
 }

@@ -61,7 +61,7 @@ in
     fontDir.enable = true;
     enableGhostscriptFonts = true;
     fonts = with pkgs; [
-      font-awesome-ttf
+      font-awesome
       nerdfonts
       siji
       weather-icons
