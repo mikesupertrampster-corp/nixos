@@ -60,14 +60,7 @@ in
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
-    fonts = with pkgs; [
-      font-awesome
-      nerdfonts
-      siji
-      weather-icons
-      material-icons
-      ipafont
-    ];
+    fonts = with pkgs; [font-awesome nerdfonts siji weather-icons material-icons ipafont];
   };
 
   services = {

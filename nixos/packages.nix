@@ -11,11 +11,10 @@
     #--------------------------------------------------------------------
     # utilities
     #--------------------------------------------------------------------
-    alacritty chromium firefox gnome2.GConf mcfly
-    gnome3.gnome-screenshot graphviz imagemagick jq lshw mpc_cli pciutils
-    pmutils powertop synergy inetutils tigervnc undervolt unzip
-    update-resolv-conf vim wget xclip zip
-    texlive.combined.scheme-full
+    alacritty chromium firefox gnome2.GConf mcfly gnome3.gnome-screenshot
+    graphviz imagemagick jq lshw mpc_cli pciutils pmutils powertop
+    synergy inetutils tigervnc undervolt unzip update-resolv-conf vim
+    wget xclip zip texlive.combined.scheme-full
 
     #--------------------------------------------------------------------
     # system

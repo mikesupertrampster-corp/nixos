@@ -52,7 +52,8 @@ in
       dpi = 160;
       videoDrivers = [ "nvidia" ];
       windowManager.i3.extraSessionCommands = "xrandr"
-      + "--output eDP-1-1   --mode 2560x1440 --pos 0x0";
+      + "--output DP-0   --mode 2560x1440 --pos 0x0"
+      + "--output HDMI-0 --mode 2560x1440 --pos 2560x0";
     };
   };
 
