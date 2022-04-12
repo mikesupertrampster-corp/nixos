@@ -34,7 +34,7 @@
     nodePackages.snyk open-policy-agent openjdk11 openjfx11 opensc
     openssl packer pacman perl pkcs11helper slack vagrant
     ssm-session-manager-plugin stern terraform terragrunt tig trivy
-    vault yq yubico-piv-tool yubikey-personalization
+    vault yq yubico-piv-tool yubikey-personalization jetbrains.goland
 
     (python39.withPackages(ps: with ps; [
       boto3 google-api-python-client google-auth-httplib2

@@ -23,7 +23,6 @@ in
       grub.configurationLimit = 2;
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "pcie.aspm=force"
       "i915.enable_fbc=1"
