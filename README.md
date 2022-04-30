@@ -1,5 +1,7 @@
 # NixOS
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e4ae5984d2484768b3e11c7eaf2a2681)](https://app.codacy.com/gh/mikesupertrampster-corp/nixos?utm_source=github.com&utm_medium=referral&utm_content=mikesupertrampster-corp/nixos&utm_campaign=Badge_Grade_Settings)
+
 ![Gitleaks](https://github.com/mikesupertrampster/nixos/actions/workflows/gitleaks.yml/badge.svg)
 
 ### Yubikey
