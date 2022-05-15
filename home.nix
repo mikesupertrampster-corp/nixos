@@ -168,7 +168,6 @@ in
 
       shellAliases = {
         cat   = "bat";
-        cd    = "zoxide";
         curl  = "curlie";
         diff  = "delta";
         dig   = "dog";
@@ -190,7 +189,8 @@ in
       initExtra =  ''
         stty -ixon
         gpg-connect-agent /bye
-        eval "$(mcfly init zsh)"
+        eval "$(mcfly init zsh)
+        eval "$(zoxide init zsh)""
       '' + builtins.readFile ./desktop/interface/terminal/functions.sh;
     };
   };
