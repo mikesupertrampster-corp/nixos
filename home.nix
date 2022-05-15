@@ -167,9 +167,19 @@ in
       };
 
       shellAliases = {
+        cat   = "bat";
+        cd    = "zoxide";
+        curl  = "curlie";
+        diff  = "delta";
+        dig   = "dog";
+        df    = "duf";
+        du    = "dust";
+        find  = "fd";
+        grep  = "ripgrep";
         gcm   = "git checkout master";
+        ls    = "exa";
         sound = "systemctl --user start edifier";
-        t     = "terraform";
+        t     = "terragrunt";
         ta    = "t apply";
         tfu   = "t force-unlock -force";
         ti    = "t import";
@@ -181,8 +191,7 @@ in
         stty -ixon
         gpg-connect-agent /bye
         eval "$(mcfly init zsh)"
-      '' + builtins.readFile ./desktop/interface/terminal/functions.sh
-      + builtins.readFile ./desktop/interface/terminal/work.sh;
+      '' + builtins.readFile ./desktop/interface/terminal/functions.sh;
     };
   };
 
