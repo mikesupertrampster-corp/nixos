@@ -39,7 +39,7 @@ in
 
   hardware = {
     cpu.intel.updateMicrocode = true;
-    facetimehd.enable = true;
+    facetimehd.enable = false;
     pulseaudio = {
       enable = true;
       package = pkgs.pulseaudioFull;

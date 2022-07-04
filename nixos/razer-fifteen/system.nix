@@ -41,7 +41,6 @@ in
       nvidiaBusId = "PCI:1:0:0";
       intelBusId  = "PCI:0:2:0";
     };
-    openrazer.enable = true;
   };
 
   services.acpid.enable = true;
@@ -50,8 +49,8 @@ in
     xserver = {
       dpi = 160;
       videoDrivers = [ "nvidia" ];
-      windowManager.i3.extraSessionCommands = "xrandr"
-      + "--output DP-0   --mode 2560x1440 --pos 0x0"
+      windowManager.i3.extraSessionCommands = "xrandr "
+      + "--output DP-0   --mode 2560x1440 --pos 0x0 "
       + "--output HDMI-0 --mode 2560x1440 --pos 2560x0";
     };
   };
