@@ -113,7 +113,7 @@ in
   home-manager.useGlobalPkgs = true;
 
   system = {
-    stateVersion = "20.09";
+    stateVersion = "22.11";
   };
 
   system.autoUpgrade = {

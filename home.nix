@@ -29,6 +29,7 @@ in
     homeDirectory   = default.user.home;
     username        = default.user.name;
     keyboard.layout = default.locale.keyboard.layout;
+    stateVersion    = "22.11";
 
     packages = [
       pkgs.nodePackages.snyk
@@ -174,7 +175,6 @@ in
         df    = "duf";
         du    = "dust";
         find  = "fd";
-        grep  = "ripgrep";
         gcm   = "git checkout master";
         ls    = "exa";
         sound = "systemctl --user start edifier";

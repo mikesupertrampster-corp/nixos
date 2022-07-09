@@ -33,10 +33,10 @@
     gotools home-manager istioctl jetbrains.idea-community kind kubectl
     kubectx kubernetes-helm kubeval kustomize lastpass-cli nix-index
     nodePackages.snyk open-policy-agent openjdk11 openjfx11 opensc
-    openssl packer pacman perl pkcs11helper slack vagrant
+    openssl packer pacman perl pkcs11helper slack vagrant lens
     ssm-session-manager-plugin stern terraform terragrunt tig trivy
-    vault yq yubico-piv-tool yubikey-personalization
-    jetbrains.goland go-ethereum teams yarn
+    vault yq yubico-piv-tool yubikey-personalization kube-capacity
+    jetbrains.goland go-ethereum teams yarn pulumi-bin minikube
 
     (python39.withPackages(ps: with ps; [
       boto3 google-api-python-client google-auth-httplib2
