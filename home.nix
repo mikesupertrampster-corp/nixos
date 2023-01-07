@@ -1,13 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-  default = import (pkgs.fetchFromGitHub {
-    owner  = "mikesupertrampster";
-    repo   = "nixos";
-    rev    = "033c3863e729a51749949ad3c688bc51f1a2b45b";
-    sha256 = "sha256:HmC7ypvTNT1wQYYw6ggQAa30RqynpP3S0/STFUhEEbQ=";
-  });
-in
 {
   nixpkgs.config = {
     allowUnfree = true;
@@ -26,9 +18,9 @@ in
   ];
 
   home = {
-    homeDirectory   = default.user.home;
-    username        = default.user.name;
-    keyboard.layout = default.locale.keyboard.layout;
+    homeDirectory   = "/home/mike";
+    username        = "mike";
+    keyboard.layout = "us";
     stateVersion    = "22.11";
 
     packages = [
@@ -42,10 +34,10 @@ in
       MCFLY_RESULTS       = 50;
       MCFLY_RESULTS_SORT  = "LAST_RUN";
       SSH_AUTH_SOCK       = "$(gpgconf --list-dirs agent-ssh-socket)";
-      PASSWORD_STORE_DIR  = "${default.user.home}/.password-store";
-      PASSWORD_STORE_KEY  = default.user.email;
+      PASSWORD_STORE_DIR  = "/home/mike/.password-store";
+      PASSWORD_STORE_KEY  = "mikesupertrampster@gmail.com";
       PASSWORD_STORE_GIT  = "git@github.com:mikesupertrampster/pass.git";
-      TF_PLUGIN_CACHE_DIR = "${default.user.home}/Downloads/terraform-cache";
+      TF_PLUGIN_CACHE_DIR = "/home/mike/Downloads/terraform-cache";
     };
   };
 
@@ -62,28 +54,19 @@ in
       enable = true;
       extensions = [
         { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock
-        { id = "hdokiejnpimakedhajhdlcegeplioahd"; } # lastpass
-        { id = "naepdomgkenhinolocfifgehidddafch"; } # browserpass
-        { id = "kaoholkoedbpjiangnchpfchhmageifp"; } # whatsapp
-        { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # darkreader
-        { id = "jpmkfafbacpgapdghgdpembnojdlgkdl"; } # aws
       ];
     };
 
     firefox = {
       enable = true;
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        browserpass
-        darkreader
-        https-everywhere
-        lastpass-password-manager
         multi-account-containers
         ublock-origin
       ];
 
       profiles = {
-        "${default.user.name}" = {
-          name = "${default.user.name}";
+        "mike" = {
+          name = "mike";
         };
       };
     };
@@ -101,10 +84,8 @@ in
 
     git = {
       enable                = true;
-      userName              = default.user.user;
-      userEmail             = default.user.email;
-      signing.key           = default.user.sign;
-      signing.signByDefault = true;
+      userName              = "michael.liu";
+      userEmail             = "mikesupertrampster@gmail.com";
       aliases = {
         co = "checkout";
       };
@@ -218,23 +199,6 @@ in
     random-background = {
       enable = true;
       imageDirectory = "%h/.config/nixpkgs/desktop/backgrounds";
-    };
-  };
-
-  systemd.user.services = {
-    edifier = {
-      Unit = {
-        Description = "Automatically connect to edifier speakers";
-        Requires    = "graphical-session.target bluetooth.target";
-        After       = "graphical-session.target bluetooth.target";
-      };
-      Service = {
-        Type      = "oneshot";
-        ExecStart = "/run/current-system/sw/bin/bluetoothctl connect ${default.bluetooth.edifier}";
-      };
-      Install = {
-        WantedBy = ["graphical-session.target" "bluetooth.target"];
-      };
     };
   };
 }

@@ -1,31 +1,28 @@
 { config, pkgs, ... }:
 
-let
-  default = import (pkgs.fetchFromGitHub {
-    owner  = "mikesupertrampster";
-    repo   = "nixos";
-    rev    = "033c3863e729a51749949ad3c688bc51f1a2b45b";
-    sha256 = "sha256:HmC7ypvTNT1wQYYw6ggQAa30RqynpP3S0/STFUhEEbQ=";
-  });
-in
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./system.nix
-    ./packages.nix
-    (builtins.fetchGit {
-      url = "https://github.com/rycee/home-manager.git";
-      rev = "91155a98ed126553deb8696b25556d782d2a5450";
-    } + "/nixos")
-  ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./system.nix
+      ./packages.nix
+      (builtins.fetchGit {
+        url = "https://github.com/rycee/home-manager.git";
+        rev = "91155a98ed126553deb8696b25556d782d2a5450";
+      } + "/nixos")
+    ];
 
   boot = {
     blacklistedKernelModules = [];
     cleanTmpDir = true;
     loader = {
-      systemd-boot.enable = true;
-      grub.configurationLimit = 2;
+       systemd-boot.enable = true;
+       efi = {
+         canTouchEfiVariables = true;
+         efiSysMountPoint = "/boot/efi";
+       };
     };
+    initrd.secrets = { "/crypto_keyfile.bin" = null; };
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
@@ -35,7 +32,20 @@ in
     firewall.allowedTCPPortRanges = [ { from = 24800; to = 24800; } ];
   };
 
-  time.timeZone = default.locale.timeZone;
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_GB.UTF-8";
+    LC_IDENTIFICATION = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
+    LC_MONETARY = "en_GB.UTF-8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_TELEPHONE = "en_GB.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
+  };
+
+  time.timeZone = "Asia/Bangkok";
 
   hardware = {
     cpu.intel.updateMicrocode = true;
@@ -66,6 +76,9 @@ in
   services = {
     blueman.enable = true;
     xserver = {
+      layout = "us";
+      xkbVariant = "";
+
       enable = true;
       windowManager = {
         i3.enable = true;
@@ -98,26 +111,15 @@ in
     };
   };
 
-  users.extraUsers = {
-    "${default.user.name}" = {
-      createHome = true;
-      home = default.user.home;
-      description = default.user.name;
-      isNormalUser = true;
-      extraGroups = ["wheel" "docker" "network" "networkmanager" "audio" "plugdev" "disk"];
-      uid = 1000;
-    };
+  users.users.mike = {
+    isNormalUser = true;
+    description = "Michael Liu";
+    extraGroups = ["wheel" "docker" "network" "networkmanager" "audio" "plugdev" "disk"];
+    packages = with pkgs; [];
   };
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
-  system = {
-    stateVersion = "22.11";
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    channel = https://nixos.org/channels/nixos-unstable;
-  };
+  system.stateVersion = "22.11";
 }

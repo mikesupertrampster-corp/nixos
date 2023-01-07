@@ -1,13 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  default = import (pkgs.fetchFromGitHub {
-     owner  = "mikesupertrampster";
-     repo   = "nixos";
-     rev    = "033c3863e729a51749949ad3c688bc51f1a2b45b";
-     sha256 = "sha256:HmC7ypvTNT1wQYYw6ggQAa30RqynpP3S0/STFUhEEbQ=";
-   });
-in
 {
   boot = {
     blacklistedKernelModules = ["dell_smbios" "iTCO_wdt"];
@@ -15,12 +7,6 @@ in
 
     initrd = {
       kernelModules = ["nvme" "nvme_core"];
-    };
-
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      grub.configurationLimit = 2;
     };
 
     kernelParams = [
@@ -50,8 +36,8 @@ in
       dpi = 160;
       videoDrivers = [ "nvidia" ];
       windowManager.i3.extraSessionCommands = "xrandr "
-      + "--output DP-0   --mode 2560x1440 --pos 0x0 "
-      + "--output HDMI-0 --mode 2560x1440 --pos 2560x0";
+      + "--output HDMI-0 --mode 1920x1080 --pos 3840x0 --primary "
+      + "--output eDP-1-1 --mode 3840x2160 --pos 0x0";
     };
   };
 
@@ -76,6 +62,5 @@ in
     };
   };
 
-  i18n.defaultLocale = default.locale.i18n;
   networking.hostName = "nixos-fifteen";
 }

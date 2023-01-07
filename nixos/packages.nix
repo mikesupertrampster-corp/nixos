@@ -37,7 +37,6 @@
     ssm-session-manager-plugin stern terraform terragrunt tig trivy
     vault yq yubico-piv-tool yubikey-personalization kube-capacity
     jetbrains.goland go-ethereum teams yarn pulumi-bin minikube
-    vscode azure-cli jetbrains.rider mono
 
     (python39.withPackages(ps: with ps; [
       boto3 google-api-python-client google-auth-httplib2
@@ -51,16 +50,16 @@
   ];
 
   environment.pathsToLink = [ "/share/zsh" ];
-  users.defaultUserShell = pkgs.zsh;
+    users.defaultUserShell = pkgs.zsh;
 
-  programs.zsh = {
-    enable = true;
-    ohMyZsh.enable = true;
-  };
+    programs.zsh = {
+      enable = true;
+      ohMyZsh.enable = true;
+    };
 
-  virtualisation = {
-    docker.enable = true;
-  };
+    virtualisation = {
+      docker.enable = true;
+    };
 
-  users.extraGroups.vboxusers.members = [ "michael.liu" ];
+    users.extraGroups.vboxusers.members = [ "mike" ];
 }
